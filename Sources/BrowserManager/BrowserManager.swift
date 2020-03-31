@@ -9,9 +9,9 @@ import UIKit
 import SafariServices
 
 open class BrowserManager {
-    static let shared = BrowserManager()
+    public static let shared = BrowserManager()
     
-    struct Browsers {
+    public struct Browsers {
         let firefox = Browser(scheme: URL(string: "firefox://"), name: "firefox")
         let opera = Browser(scheme: URL(string: "opera://"), name: "opera")
         let googleChrome = Browser(scheme: URL(string: "googlechrome://"), name: "google chrome")
@@ -24,12 +24,12 @@ open class BrowserManager {
         }()
     }
     
-    var supportedBrowsers = Browsers()
+    open var supportedBrowsers = Browsers()
     
-    lazy var installedBrowsers: [Browser] = {
+    open lazy var installedBrowsers: [Browser] = {
         return supportedBrowsers.array.filter({ $0.isInstalled() })
     }()
-    var defaultBrowser: Browser {
+    open var defaultBrowser: Browser {
         get {
             return (installedBrowsers.first(where: { $0.name == UserDefaults.standard.string(forKey: "defaultBrowser") }) ?? Browser(name: "in-app safari"))
         }
@@ -46,9 +46,9 @@ open class BrowserManager {
     }
         
     
-    let app = UIApplication.shared
+    private let app = UIApplication.shared
 
-    fileprivate func encodeByAddingPercentEscapes(_ input: String) -> String {
+    private func encodeByAddingPercentEscapes(_ input: String) -> String {
         return NSString(string: input).addingPercentEncoding(withAllowedCharacters: CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]"))!
     }
 
