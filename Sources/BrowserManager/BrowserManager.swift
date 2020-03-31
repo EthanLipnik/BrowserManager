@@ -65,6 +65,9 @@ open class BrowserManager {
                     completion?()
                 }
             }
+            #if targetEnvironment(macCatalyst)
+            openInSafari()
+            #else
             let scheme = url.scheme
             if scheme == "http" || scheme == "https" {
                 
@@ -120,6 +123,7 @@ open class BrowserManager {
             } else {
                 openInSafari()
             }
+            #endif
         }
     }
 }
