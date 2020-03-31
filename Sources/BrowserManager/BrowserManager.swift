@@ -5,6 +5,8 @@
 //
 
 import Foundation
+
+#if !os(macOS)
 import UIKit
 import SafariServices
 
@@ -129,14 +131,16 @@ open class BrowserManager {
 }
 
 public struct Browser: Equatable {
-    var scheme: URL? = nil
-    let app = UIApplication.shared
-    let name: String
+    public var scheme: URL? = nil
+    public let app = UIApplication.shared
+    public let name: String
     
-    func isInstalled() -> Bool {
+    public func isInstalled() -> Bool {
         
         guard let scheme = scheme else { return true }
         
         return app.canOpenURL(scheme)
     }
 }
+
+#endif
