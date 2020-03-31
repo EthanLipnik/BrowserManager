@@ -3,6 +3,8 @@
 ### Easy browser managment in Swift.
 *Supports iOS 9 and above.*
 
+### Try it in [Neptune](https://www.twitter.com/NeptuneApp_ "Neptune")
+
 ## How to use
 ### The Default Browser
 *Automatically defaults to in-app safari if not modified.*
