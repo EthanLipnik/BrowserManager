@@ -1,6 +1,6 @@
 # BrowserManager
 
-Easy browser managment in Swift.
+### Easy browser managment in Swift.
 *Supports iOS 9 and above.*
 
 ## How to use
