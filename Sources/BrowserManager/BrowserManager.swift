@@ -28,9 +28,11 @@ open class BrowserManager {
     
     open var supportedBrowsers = Browsers()
     
-    open lazy var installedBrowsers: [Browser] = {
-        return supportedBrowsers.array.filter({ $0.isInstalled() })
-    }()
+    open var installedBrowsers: [Browser] {
+        get {
+            return supportedBrowsers.array.filter({ $0.isInstalled() })
+        }
+    }
     open var defaultBrowser: Browser {
         get {
             return (installedBrowsers.first(where: { $0.name == UserDefaults.standard.string(forKey: "defaultBrowser") }) ?? Browser(name: "in-app safari"))
